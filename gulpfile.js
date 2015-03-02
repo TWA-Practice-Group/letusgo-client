@@ -15,12 +15,12 @@ var reload = browserSync.reload;
 
 gulp.task('less_compiler', function () {
 
-    return  gulp.src('app/styles/*.less')
+    return  gulp.src('app/styles/**/*.less')
         .pipe($.less())
         .pipe(gulp.dest('.tmp/styles'));
 });
 
-gulp.task('react_compiler', ['less_compiler'], function() {
+gulp.task('react_compiler', function() {
 
     browserify(['./app/scripts/main.js'])
         .transform(reactify)
@@ -29,16 +29,16 @@ gulp.task('react_compiler', ['less_compiler'], function() {
         .pipe(gulp.dest('./.tmp/scripts'));
 });
 
-gulp.task('jade_compiler', ['react_compiler'], function(){
+gulp.task('jade_compiler', function(){
 
-    return gulp.src('./app/*.jade')
+    return gulp.src('./app/**/*.jade')
         .pipe($.jade())
         .pipe(gulp.dest('./.tmp/'))
 });
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['jade_compiler'], function () {
+gulp.task('serve', ['jade_compiler', 'react_compiler', 'less_compiler'], function () {
     browserSync({
         notify: false,
         port: 9000,
@@ -52,14 +52,14 @@ gulp.task('serve', ['jade_compiler'], function () {
 
     gulp.watch([
         'app/*.html',
-        'app/scripts/*.js',
-        'app/styles/*.less',
-        'app/*.jade'
+        'app/scripts/**/*.js',
+        'app/styles/**/*.less',
+        'app/**/*.jade'
     ]).on('change', reload);
 
-    gulp.watch('app/styles/*.less', ['less_compiler']);
-    gulp.watch('app/scripts/*.js',['react_compiler']);
-    gulp.watch('app/*.jade', ['jade_compiler'])
+    gulp.watch('app/styles/**/*.less', ['less_compiler']);
+    gulp.watch('app/scripts/**/*.js',['react_compiler']);
+    gulp.watch('app/**/*.jade', ['jade_compiler'])
 });
 
 
