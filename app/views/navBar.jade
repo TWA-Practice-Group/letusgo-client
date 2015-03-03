@@ -1,11 +1,13 @@
 div(class="ui page grid")
     div(class="row")
         div(class="sixteen wide column")
-            div(class="ui inverted blue menu")
+            div(class="ui inverted teal menu")
                 div(class="left menu")
-                    a(class="ui item") LetUsGo
-                    a(class="ui link item") 主页
-                    a(class="ui link item") 商城
-                    a(class="ui link item") 商城管理
+                    a(class="ui  item") LetUsGo
+                    a#homeLink(class="ui link active item" href="#") 主页
+                        i.home.icon
+                    a(class="ui link item" href="./views/shop.html") 商城
+                    a(class="ui link item" href="./views/shopManagement.html") 商城管理
                 div(class="right menu")
-                    a(class="ui link item") 购物车
+                    a(class="ui link item" href="./views/cart.html") 购物车
+                        i.cart.in.icon
