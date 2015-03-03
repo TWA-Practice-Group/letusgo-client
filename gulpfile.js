@@ -45,7 +45,8 @@ gulp.task('serve', ['jade_compiler', 'react_compiler', 'less_compiler'], functio
         server: {
             baseDir: ['.tmp', 'app'],
             routes: {
-                '/bower_components': 'bower_components'
+                '/node_modules': 'node_modules',
+                '/images': 'images'
             }
         }
     });
