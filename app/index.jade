@@ -16,4 +16,19 @@ html(lang="en")
         div.container
             div.ui.inverted.masthead.segment
                 include ./views/navBar.jade
-                include ./views/shopDesc.jade
+                div(class="ui page grid")
+                    div(class="row")
+                        div(class="four wide column")
+                            img(src="images/cat.png" class="ui medium vertical image")
+                        div(class="twelve wide column")
+                            div(class="ui vertical feature inverted warmth segment")
+                                div(class="ui centered page green grid")
+                                    div(class="fourteen wide column")
+                                        p.
+                                            亲们，欢迎光临【LetUsGo】商城。
+                                        p.
+                                            不管晴天雨天，能够见到您的一天，就是明媚的一天。
+                                        p.
+                                            选择来此购，享受购来此。来此购购物商城，您购物最好的选择！么么哒！
+
+            include ./views/shopDesc.jade
